@@ -1,6 +1,6 @@
 %define ver	031220
 %define	name	links-hacked
-%define	release	%mkrel 18
+%define	release	%mkrel 19
 
 Summary:	Lynx-like text WWW browser
 Name:		%{name}
@@ -13,6 +13,7 @@ Source1:	links-16.png
 Source2:	links-32.png
 Source3:	links-48.png
 Source4:        links.cfg
+# links fonts (overriding links-hacked ones):
 Source5:	links-fonts-new.tar.bz2
 Patch7:		links-0.96-no-domain-security.patch
 Patch8:		links-current-color-by-default--and-vt100-frames.patch

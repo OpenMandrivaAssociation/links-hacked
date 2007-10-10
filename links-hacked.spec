@@ -127,7 +127,7 @@ cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 Name=Links (hacked)
 Comment=Lynx-like text WWW browser
 Exec=%{_bindir}/%{name} 
-Icon=%{name}.png
+Icon=%{name}
 Terminal=false
 Type=Application
 StartupNotify=true

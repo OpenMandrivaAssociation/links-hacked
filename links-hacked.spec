@@ -34,6 +34,7 @@ BuildRequires:	openssl-devel
 BuildRequires:  automake1.7
 BuildRequires:  X11-devel
 Provides:	webclient
+BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
 %description
 Links is a text based WWW browser, at first look similar to Lynx, but

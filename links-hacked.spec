@@ -110,16 +110,6 @@ install links %buildroot%{_bindir}/%name
 
 install -D -m 644 %SOURCE4 %buildroot/etc/links.cfg
 
-install -d %buildroot/%_menudir/
-cat << EOF >$RPM_BUILD_ROOT%{_menudir}/%{name}
-?package(%{name}):  \
-  command="/usr/bin/%name" \
-  needs="X11" \
-  icon="%name.png" \
-  section="Networking/WWW" \
-  title="Links (hacked version)" longtitle="Lynx-like text/graphic WWW browser" \
-  xdg="true"
-EOF
 
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
 cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
@@ -170,7 +160,6 @@ fi
 %_bindir/make_included
 %_bindir/rasterizer
 %_mandir/*/*
-%_menudir/%name
 %_datadir/applications/mandriva-*
 #
 %_miconsdir/*.png

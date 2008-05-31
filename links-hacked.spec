@@ -86,11 +86,11 @@ Links-hacked is based on top of links and offer the below features:
 chmod a+r *
 
 %build
-[[ -f configure ]] || ./autogen.sh
+./autogen.sh
 perl -pi -e 's!"-g!"!g' configure
 cp -a %SOURCE5 .
 
-%configure --enable-graphics --enable-javascript
+%configure2_5x --enable-graphics --enable-javascript
 (cd Unicode ; LC_ALL=C ./gen )
 # even more dirty :)
 perl -pi -e 's!wget xray.sai.msu.ru/\~karpov/links-hacked/downloads/links-fonts-new.tgz \&\& tar xzvf links-fonts-new.tgz!tar -jxvf links-fonts-new.tar.bz2!' Makefile{,.am,.in}
@@ -103,7 +103,7 @@ perl -pi -e 's!^@.*!!' utils/Makefile
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%makeinstall
+%makeinstall_std
 
 rm -f %buildroot%{_bindir}/links
 install links %buildroot%{_bindir}/%name

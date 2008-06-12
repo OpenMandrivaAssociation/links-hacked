@@ -141,11 +141,15 @@ if [ ! -e /usr/bin/links ]; then
 fi
 
 %post
+%if %mdkversion < 200900
 %{update_menus}
+%endif
 update-alternatives --install /usr/bin/links links /usr/bin/%name 5
 
 %postun
+%if %mdkversion < 200900
 %{clean_menus}
+%endif
 if [ "$1" = "0" ]; then
   update-alternatives --remove links /usr/bin/%name
 fi

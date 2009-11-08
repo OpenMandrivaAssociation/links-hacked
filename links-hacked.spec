@@ -1,6 +1,6 @@
 %define ver	031220
 %define	name	links-hacked
-%define	release	%mkrel 22
+%define	release	%mkrel 23
 
 Summary:	Lynx-like text WWW browser
 Name:		%{name}

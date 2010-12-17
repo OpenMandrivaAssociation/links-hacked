@@ -25,14 +25,20 @@ Patch15:	links-hacked-031220-gcc34.patch
 Patch16:	links-hacked-031220-lua5.patch
 Patch17:	links-hacked-031220-lua5compil.patch
 Patch18:	links-hacked-031220-gcc401.patch
+Patch19:	links-hacked-031220-fix-build.patch
 URL:		http://xray.sai.msu.ru/~karpov/links-hacked/
-BuildConflicts: libsvgalib1-devel
-BuildRequires:	gpm-devel ncurses-devel png-devel jpeg-devel lua-devel >= 5.0.2-9mdk
-BuildRequires:	ncurses-devel => 5.0 
-BuildRequires:	freetype2-devel tiff-devel directfb-devel
+BuildRequires:  libx11-devel
+BuildRequires:	bzip2-devel
 BuildRequires:	openssl-devel
-BuildRequires:  automake1.7
-BuildRequires:  X11-devel
+BuildRequires:	directfb-devel
+BuildRequires:	freetype2-devel
+BuildRequires:	gd-devel
+BuildRequires:	svgalib-devel
+BuildRequires:	gpm-devel
+BuildRequires:	jpeg-devel
+BuildRequires:	png-devel
+BuildRequires:	zlib-devel
+BuildRequires:	tiff-devel
 Provides:	webclient
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
@@ -82,6 +88,7 @@ Links-hacked is based on top of links and offer the below features:
 %patch16 -p0 -b .lua
 %patch17 -p0 -b .lua5
 %patch18 -p0 -b .gcc401
+%patch19 -p0 -b .build
 
 chmod a+r *
 

@@ -26,6 +26,8 @@ Patch16:	links-hacked-031220-lua5.patch
 Patch17:	links-hacked-031220-lua5compil.patch
 Patch18:	links-hacked-031220-gcc401.patch
 Patch19:	links-hacked-031220-fix-build.patch
+Patch20:	links-hacked-fix-build.patch
+Patch21:	links-hacked-fix-crash.diff
 URL:		http://xray.sai.msu.ru/~karpov/links-hacked/
 BuildRequires:  libx11-devel
 BuildRequires:	bzip2-devel
@@ -89,6 +91,8 @@ Links-hacked is based on top of links and offer the below features:
 %patch17 -p0 -b .lua5
 %patch18 -p0 -b .gcc401
 %patch19 -p0 -b .build
+%patch20 -p0 -b .gcc45
+%patch21 -p0 -b .segv
 
 chmod a+r *
 

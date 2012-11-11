@@ -1,0 +1,20 @@
+--- ./font.c.tv	2005-07-08 01:19:03.000000000 +0200
++++ ./font.c	2005-07-08 01:18:34.000000000 +0200
+@@ -5,7 +5,7 @@
+ inline static struct font *find_font_with_char(int, struct font **, int *, int *);
+ inline static struct letter *find_char_in_font(struct font *, int);
+ static inline int compute_width (int ix, int iy, int required_height);
+-static void prune_font_cache(struct graphics_driver *gd);
++void prune_font_cache(struct graphics_driver *gd);
+ 
+ int n_fonts;
+ 
+@@ -669,7 +669,7 @@
+ }
+ 
+ /* Prunes the cache to comply with maximum size */
+-static void prune_font_cache(struct graphics_driver *gd)
++void prune_font_cache(struct graphics_driver *gd)
+ {
+ 	struct font_cache_entry *bottom;
+ 

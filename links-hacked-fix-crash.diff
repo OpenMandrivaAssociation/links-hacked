@@ -1,0 +1,11 @@
+diff -up ./cache.c.tv ./cache.c
+--- ./cache.c.tv	2011-05-11 10:56:46.182177849 +0200
++++ ./cache.c	2011-05-11 10:56:46.985179280 +0200
+@@ -101,6 +101,7 @@ int add_fragment(struct cache_entry *e, 
+ 	struct fragment *nf;
+ 	int a = 0;
+ 	int trunc = 0;
++	if (data==NULL) return 0;
+ 	if (!length) return 0;
+ 	if (e->length < offset + length) e->length = offset + length;
+ 	e->count = cache_count++;

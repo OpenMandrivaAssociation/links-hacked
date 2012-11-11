@@ -1,0 +1,17 @@
+diff -up ./Unicode/gen-cp.tv ./Unicode/gen-cp
+--- ./Unicode/gen-cp.tv	2011-05-11 10:33:02.380818479 +0200
++++ ./Unicode/gen-cp	2011-05-11 10:41:56.372321707 +0200
+@@ -10,11 +10,11 @@ for i in $codepages; do
+ 	echo -n $i' ' 1>&2
+ 	echo
+ 	echo 'struct table_entry table_'$i' [] = {'
+-	tail +3 $i.cp | sed 's/#.*$//' | grep '^0x[89a-zA-Z]' | sed 's/[ 	][ 	]*/ /g' | sed 's/[ 	]*$/ },/' | sed 's/ /, /' | sed 's/^[ 	]*/	{ /' | grep '.*,.*,'
++	tail -c +3 $i.cp | sed 's/#.*$//' | grep '^0x[89a-zA-Z]' | sed 's/[ 	][ 	]*/ /g' | sed 's/[ 	]*$/ },/' | sed 's/ /, /' | sed 's/^[ 	]*/	{ /' | grep '.*,.*,'
+ 	echo '	{ 0, 0 }'
+ 	echo '};'
+ 	echo
+-	echo 'unsigned char *aliases_'$i' [] = {'`head -2 $i.cp | tail +2`', NULL };'
++	echo 'unsigned char *aliases_'$i' [] = {'`head -2 $i.cp | tail -1`', NULL };'
+ 	n=`expr $n + 1`
+ done
+ echo

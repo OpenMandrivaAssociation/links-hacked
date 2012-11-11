@@ -1,0 +1,15 @@
+--- links-2.0pre1/default.c.pix	2002-05-21 16:54:17.000000000 +0200
++++ links-2.0pre1/default.c	2002-05-21 17:13:57.000000000 +0200
+@@ -63,6 +63,12 @@
+ unsigned char *_parse_options(int argc, unsigned char *argv[], struct option **opt)
+ {
+ 	unsigned char *e, *u = NULL;
++
++	{
++	  int offset = strlen(argv[-1]) - sizeof("-graphic") + 1;
++	  if (offset > 0 && strcmp(argv[-1] + offset, "-graphic") == 0) ggr = 1;
++	}
++
+ 	while (argc) {
+ 		int i;
+ 		argv++, argc--;

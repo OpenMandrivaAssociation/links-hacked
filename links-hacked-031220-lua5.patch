@@ -1,0 +1,11 @@
+--- ./configure.in.tv	2004-08-29 19:22:13.346691904 +0200
++++ ./configure.in	2004-08-29 19:23:49.402644522 +0200
+@@ -310,7 +310,7 @@
+ 			fi
+ 
+ 			AC_TRY_LINK([#include <lua.h>],
+-				    [lua_open(0)],
++				    [lua_open()],
+ 				    cf_result=yes, cf_result=no)
+ 		fi
+ 	done

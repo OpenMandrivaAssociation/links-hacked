@@ -1,0 +1,33 @@
+--- ./links.1.cfg	2003-11-19 15:42:23.000000000 +0100
++++ ./links.1	2003-11-19 15:42:29.000000000 +0100
+@@ -306,7 +306,7 @@
+ 
+ .SH FILES
+ .TP
+-.IP "~/.links/.links.cfg"
++.IP "~/.links/.links-hacked.cfg"
+ Per-user configfile, automatically created by
+ .B links.
+ .SH PLATFORMS
+--- ./default.c.cfg	2003-11-19 15:41:59.000000000 +0100
++++ ./default.c	2003-11-19 15:42:14.000000000 +0100
+@@ -338,8 +338,8 @@
+ 
+ void load_config()
+ {
+-	load_config_file("/etc/", "links.cfg");
+-	load_config_file(links_home, "links.cfg");
++	load_config_file("/etc/", "links-hacked.cfg");
++	load_config_file(links_home, "links-hacked.cfg");
+ 	load_config_file(links_home, "user.cfg");
+ }
+ 
+@@ -369,7 +369,7 @@
+ #ifdef G
+         if (F) update_driver_param();
+ #endif
+-        write_config_file(links_home, "links.cfg", links_options, term);
++        write_config_file(links_home, "links-hacked.cfg", links_options, term);
+ 
+         /* And new style options too */
+         save_options();

@@ -1,0 +1,93 @@
+--- ./lua.c.lua5	2003-04-13 22:54:56.000000000 +0200
++++ ./lua.c	2004-08-29 19:37:37.394891338 +0200
+@@ -137,10 +137,10 @@
+ 
+ void init_lua()
+ {
+-	L = lua_open(0);
++	L = lua_open();
+ 	lua_baselibopen(L);
+ 	lua_strlibopen(L);
+-	lua_register(L, LUA_ALERT, l_alert);
++	lua_register(L, "_ALERT", l_alert);
+ 	lua_register(L, "current_url", l_current_url);
+ 	lua_register(L, "current_link", l_current_link);
+ 	lua_register(L, "current_document", l_current_document);
+@@ -216,7 +216,7 @@
+ 
+ void lua_console(struct session *ses, unsigned char *expr)
+ {
+-	int err;
++	int err = 0;
+ 	const unsigned char *act;
+ 
+ 	lua_getglobal(L, "lua_console_hook");
+@@ -227,7 +227,7 @@
+ 	}
+ 	lua_pushstring(L, expr);
+ 	if (prepare_lua(ses)) return;
+-	err = lua_call(L, 1, 2);
++	lua_call(L, 1, 2);
+ 	finish_lua();
+ 	if (err) return;
+ 	
+--- ./menu.c.lua5	2004-08-29 19:43:41.666513002 +0200
++++ ./menu.c	2004-08-29 19:44:21.180906895 +0200
+@@ -913,7 +913,7 @@
+         return stracpy(url);
+ #else
+ 	lua_State *L = lua_state;
+-	int err;
++	int err = 0;
+ 
+ 	lua_getglobal(L, "goto_url_hook");
+ 	if (lua_isnil(L, -1)) {
+@@ -927,7 +927,7 @@
+ 	else lua_pushstring(L, cur_loc(ses)->url);
+ 
+ 	if (prepare_lua(ses)) return;
+-	err = lua_call(L, 2, 1);
++	lua_call(L, 2, 1);
+ 	finish_lua();
+ 	if (err) return;
+ 
+--- ./sched.c.lua5	2004-08-29 19:44:34.885043547 +0200
++++ ./sched.c	2004-08-29 19:45:11.368407456 +0200
+@@ -538,7 +538,7 @@
+ {
+ 	lua_State *L = lua_state;
+ 	char *ret = NULL;
+-	int err;
++	int err = 0;
+ 
+ 	lua_getglobal(L, "proxy_for_hook");
+ 	if (lua_isnil(L, -1)) {
+@@ -549,7 +549,7 @@
+ 	lua_pushstring(L, url);
+ 	if (prepare_lua(NULL))
+ 		return NULL;
+-	err = lua_call(L, 1, 1);
++	lua_call(L, 1, 1);
+ 	finish_lua();
+ 	if (err)
+ 		return NULL;
+--- ./session.c.lua5	2004-08-29 19:44:39.544090010 +0200
++++ ./session.c	2004-08-29 19:45:17.452468159 +0200
+@@ -715,7 +715,7 @@
+ {
+ 	lua_State *L = lua_state;
+ 	unsigned char *s = NULL;
+-	int err;
++	int err = 0;
+ 
+ 	lua_getglobal(L, "pre_format_html_hook");
+ 	if (lua_isnil(L, -1)) {
+@@ -727,7 +727,7 @@
+ 	lua_pushlstring(L, html, *len);
+ 
+ 	if (prepare_lua(ses)) return NULL;
+-	err = lua_call(L, 2, 1);
++	lua_call(L, 2, 1);
+ 	finish_lua();
+         if (err) return NULL;
+ 

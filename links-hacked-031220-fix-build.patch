@@ -1,0 +1,11 @@
+--- Makefile.am.build	2003-09-21 18:19:14.000000000 +0200
++++ Makefile.am	2010-12-17 14:27:58.000000000 +0100
+@@ -7,7 +7,7 @@
+ font:
+ 	wget xray.sai.msu.ru/~karpov/links-hacked/downloads/links-fonts-new.tgz && tar xzvf links-fonts-new.tgz
+         
+-font_include.c: font/ 
++font_include.c: font
+ 	./utils/generate_font	
+ 
+ arrow.inc: utils/arrow utils/arrow.png

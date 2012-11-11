@@ -1,0 +1,20 @@
+--- ./bookmarks.c.tv	2003-05-24 20:32:03.000000000 +0200
++++ ./bookmarks.c	2003-06-26 01:17:43.000000000 +0200
+@@ -684,6 +684,17 @@
+ {
+         current_bookmarks_file = stracpy(options_get("bookmarks_file"));
+         current_bookmarks_time = get_modification_time(options_get("bookmarks_file"));
++	 	/* try to create bookmarks.html based on old bookmarks (from links <= 0.97) */
++	 	if (access(current_bookmarks_file, R_OK) != 0) {
++	 	  char *prev;
++	 	  if ((prev = get_current_dir_name()) && chdir(links_home) == 0) {
++	 	    if (access("bookmarks", R_OK) == 0 && access("/usr/bin/perl", X_OK) == 0) {
++	 	      system("/usr/bin/perl -lne '@l = split(q(\\|)); print qq(<dt><a href=\"$l[1]\">$l[0]</a>)' bookmarks > bookmarks.html");
++	 	    }
++	 	    chdir(prev);
++	 	    free(prev);
++	 	  }
++	 	}
+         load_bookmarks();
+ }
+ 

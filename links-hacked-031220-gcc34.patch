@@ -1,0 +1,38 @@
+--- ./options.c.tv	2004-07-28 20:46:59.985249779 +0200
++++ ./options.c	2004-07-28 20:47:27.078882378 +0200
+@@ -259,9 +259,9 @@
+         }
+         fclose(f);
+ 
++load_failure:
+         return;
+ 
+-load_failure:
+         /* internal("Can't load options!\n"); */
+ }
+ 
+--- ./options_manager.c.tv	2004-07-28 20:47:47.252353386 +0200
++++ ./options_manager.c	2004-07-28 20:48:24.638226231 +0200
+@@ -164,8 +164,8 @@
+                 }
+                 add_to_str(&txt,&l,": ");
+                 if(item->value) add_to_str(&txt,&l,item->value);
+-        already_drawn:
+         }
++        already_drawn:
+         return txt;
+ }
+ 
+--- ./view_gr.c.tv	2004-07-28 20:48:43.264661085 +0200
++++ ./view_gr.c	2004-07-28 20:49:07.123218071 +0200
+@@ -1401,8 +1401,9 @@
+                                           term->dev->size.x2, y2,
+                                           bfu_bg_color);
+ 
++		}
+         tabs_end:
+-        }
++		return;
+ 
+ }
+ 

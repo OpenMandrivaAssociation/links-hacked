@@ -1,0 +1,11 @@
+--- ./options_register.c.tv	2003-07-01 12:42:55.000000000 +0200
++++ ./options_register.c	2003-07-01 12:43:39.000000000 +0200
+@@ -62,7 +62,7 @@
+ 
+                 register_optgroup(TEXT(T_HTML_OPTIONS),1);
+                 {
+-                        register_option_cp_with_hook  ("html_assume_codepage",TEXT(T_DEFAULT_CODEPAGE),"iso8859-1",2,html_hook);
++                        register_option_cp_with_hook  ("html_assume_codepage",TEXT(T_DEFAULT_CODEPAGE),"iso-latin1",2,html_hook);
+                         register_option_bool_with_hook("html_hard_codepage",TEXT(T_IGNORE_CHARSET_INFO_SENT_BY_SERVER),0,2,html_hook);
+                         register_option_bool_with_hook("html_tables",TEXT(T_DISPLAY_TABLES),1,2,html_hook);
+                         register_option_bool_with_hook("html_frames",TEXT(T_DISPLAY_FRAMES),1,2,html_hook);

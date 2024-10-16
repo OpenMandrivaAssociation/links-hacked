@@ -28,7 +28,7 @@ Patch18:	links-hacked-031220-gcc401.patch
 Patch19:	links-hacked-031220-fix-build.patch
 Patch20:	links-hacked-fix-build.patch
 Patch21:	links-hacked-fix-crash.diff
-URL:		http://xray.sai.msu.ru/~karpov/links-hacked/
+URL:		https://xray.sai.msu.ru/~karpov/links-hacked/
 BuildRequires:  libx11-devel
 BuildRequires:	bzip2-devel
 BuildRequires:	openssl-devel
